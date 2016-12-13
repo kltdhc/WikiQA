@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../QA_A2Q/.idea/QA_A2Q.iml" filepath="$PROJECT_DIR$/../QA_A2Q/.idea/QA_A2Q.iml" />
       <module fileurl="file://$PROJECT_DIR$/../algorithm_lab1/code/.idea/code.iml" filepath="$PROJECT_DIR$/../algorithm_lab1/code/.idea/code.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/wikiQA.iml" filepath="$PROJECT_DIR$/.idea/wikiQA.iml" />
     </modules>

@@ -1,6 +1,7 @@
 import os
 import numpy as np
 from model import train_model
+import cnn_model
 
 
 def w2v_input(file_dir):
@@ -147,7 +148,7 @@ def read_test(file_name, sen_no):
     return outq, outa, inq, ina
 
 if __name__ == '__main__':
-    (sen_no, sentences) = sens_input('/home/wanghao/workspace/cl/lemma_sen.txt')
+    (sen_no, sentences) = sens_input('/home/wanghao/workspace/cl/wikiqa/lemma_sen.txt')
     print(len(sentences))
     # print('A: ' + sen1[0], '\nB: ' + sen2[0], '\nO:', out[0])
     # print(sen_no['Q1'], sentences[sen_no['Q1']], len(sentences))
@@ -170,7 +171,8 @@ if __name__ == '__main__':
     # print(words[i], end=" ")
     # print()
     #    print(words[i], end=" ")
-    w2v = w2v_input('/media/wanghao/0DD813960DD81396/work/summer_try/glove.6B/glove.6B.100d.txt')
+    # w2v = w2v_input('/media/wanghao/0DD813960DD81396/work/summer_try/glove.6B/glove.6B.100d.txt')
+    w2v = w2v_input("/home/wanghao/workspace/cl/w2v.txt")
     # print(len(w2v))
     # print(w2v['this'])
     wordmat = w2v_init(words, w2v)
@@ -178,6 +180,7 @@ if __name__ == '__main__':
     # print(w2v[words[senmat[2][4]]])
     # print(wordmat[senmat[2][4]])
     testq, testa, intestq, intesta = read_test('/home/wanghao/workspace/cl/dev.txt', sen_no)
+    test2q, test2a, intest2q, intest2a = read_test('/home/wanghao/workspace/cl/test.txt', sen_no)
     print(len(testq))
     t = train_model(max_document_length,
                     wordmat,
@@ -187,11 +190,14 @@ if __name__ == '__main__':
                     senmat,
                     lenwords,
                     testq,
-                    testa)
-    outf = open('/home/wanghao/workspace/wikiQA/result/r1.txt', 'w')
-    for i in range(len(intestq)):
-        print(intestq[i], intesta[i], t.result[i][0], file=outf)
-    outf.close()
+                    testa,
+                    intestq,
+                    intesta,
+                    test2q,
+                    test2a,
+                    intest2q,
+                    intest2a)
+
     # print(sen_q[0], sentences[sen_q[0]])
     # print(sen_ar[0], sentences[sen_ar[0]])
     # print(sen_aw[0], sentences[sen_aw[0]])
